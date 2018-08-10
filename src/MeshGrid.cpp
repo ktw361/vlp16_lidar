@@ -7,10 +7,12 @@
 #include "vlp16_lidar/MeshGrid.h"
 #include "vlp16_lidar/Filter.h"
 
+#define PAST_ANGLE (36000 * 2)
+#define FILTER_ORDER 5
 using std::cout;
 using std::endl;
 
-MeshGrid::MeshGrid() : mesh_filter(T_GRID_H_NUM,T_GRID_V_NUM,5)
+MeshGrid::MeshGrid() : mesh_filter(T_GRID_H_NUM,T_GRID_V_NUM,FILTER_ORDER)
 {
 	num_elem = int_2d_init(T_GRID_H_NUM, T_GRID_V_NUM);
 	low = int_2d_init(T_GRID_H_NUM, T_GRID_V_NUM);
@@ -102,7 +104,7 @@ MeshGrid::grid_set(int x,int y, int new_z) // generate a point in GridMap from x
 
     if (x < 0 || x >= T_GRID_H_NUM) return;
     if (y < 0 || y >= T_GRID_V_NUM)	return;
-    if ((x<15 && x>4) && (y<5) && (new_z < 30 && new_z > -30)) return; // Clear noise around center
+    if ((x<16 && x>4) && (y<6) && (new_z < 30 && new_z > -30)) return; // Clear noise around center
     if (new_z >= Z_CEILING) return; // Clear top
     if(num_elem[x][y] == 0){
         low[x][y] = new_z;
@@ -291,7 +293,7 @@ MeshGrid::consume_udp(char * udp_packet)
         // If finish one circle, terminate
         past_angle += (azimuth_next - azimuth_cur);
         strcpy(block_cur, block_next);
-        if (past_angle > 108000) {
+        if (past_angle > PAST_ANGLE) {
 			past_angle = 0;
         	merge_obstacles();
 			visualize_text();
