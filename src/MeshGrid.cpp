@@ -10,7 +10,7 @@
 using std::cout;
 using std::endl;
 
-MeshGrid::MeshGrid() : mesh_filter(T_GRID_H_NUM,T_GRID_V_NUM)
+MeshGrid::MeshGrid() : mesh_filter(T_GRID_H_NUM,T_GRID_V_NUM,5)
 {
 	num_elem = int_2d_init(T_GRID_H_NUM, T_GRID_V_NUM);
 	low = int_2d_init(T_GRID_H_NUM, T_GRID_V_NUM);
@@ -102,7 +102,7 @@ MeshGrid::grid_set(int x,int y, int new_z) // generate a point in GridMap from x
 
     if (x < 0 || x >= T_GRID_H_NUM) return;
     if (y < 0 || y >= T_GRID_V_NUM)	return;
-    if ((x<16 && x>4) && (y<7) && (new_z < 30 && new_z > -30)) return; // Clear noise around center
+    if ((x<15 && x>4) && (y<5) && (new_z < 30 && new_z > -30)) return; // Clear noise around center
     if (new_z >= Z_CEILING) return; // Clear top
     if(num_elem[x][y] == 0){
         low[x][y] = new_z;
