@@ -7,6 +7,7 @@
 #include <algorithm>
 #include "T_FU_DATA.h"
 #include "velodyne.h"
+#include "Filter.h"
 
 	// Layout :
 	//  ^
@@ -56,15 +57,13 @@ public:
 	T_3D16_OBS_TO_FU get_obs_to_fu();
 	T_3D16_GRID_TO_FU get_grid_to_fu();
 private:
+	Filter mesh_filter;
 	int past_angle;
 	char buf[2];
 	char block_cur[98];
 	char block_next[98];
 };
 
-int** int_2d_init(int row_num, int col_num);
-void int_2d_free(int** array, int row_num);
-void int_2d_clear(int** array, int row_num, int col_num);
 template <typename T> T ros_int_init(int data);
 
 #endif

@@ -21,4 +21,8 @@ extern double COS_W[16];
 int get_abs_azimuth(char *);
 int get_abs_dist(char *, int);
 
+int** int_2d_init(int row_num, int col_num);
+void int_2d_free(int** array, int row_num);
+void int_2d_clear(int** array, int row_num, int col_num);
+
 #endif

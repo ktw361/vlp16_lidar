@@ -132,6 +132,7 @@ add_executable(udp_test
     src/UdpClient.cpp
     src/velodyne.cpp
     src/MeshGrid.cpp
+    src/Filter.cpp
 )
 target_link_libraries(udp_test ${catkin_LIBRARIES})
 add_dependencies(udp_test vlp16_lidar_generate_messages_cpp)

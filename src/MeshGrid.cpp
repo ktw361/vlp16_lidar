@@ -5,11 +5,12 @@
 #include "vlp16_lidar/T_FU_DATA.h"
 #include "vlp16_lidar/velodyne.h"
 #include "vlp16_lidar/MeshGrid.h"
+#include "vlp16_lidar/Filter.h"
 
 using std::cout;
 using std::endl;
 
-MeshGrid::MeshGrid()
+MeshGrid::MeshGrid() : mesh_filter(T_GRID_H_NUM,T_GRID_V_NUM)
 {
 	num_elem = int_2d_init(T_GRID_H_NUM, T_GRID_V_NUM);
 	low = int_2d_init(T_GRID_H_NUM, T_GRID_V_NUM);
@@ -20,9 +21,21 @@ MeshGrid::MeshGrid()
 	grid_to_obs_idx = int_2d_init(T_GRID_H_NUM,T_GRID_V_NUM);
 }
 
+// This function takes as input only cell_content and obs_point, which is a aux vector
 std::vector<MeshGrid::PointList> 
 MeshGrid::merge_obstacles()
 {
+	// Step one: do filtering
+	mesh_filter.moving_average_with_update(cell_content);
+
+	// Step two: reset obs_point based on  cell_content
+    obs_points.clear();
+	for (int i=0;i!=T_GRID_H_NUM;i++)
+		for (int j=0;j!=T_GRID_V_NUM;j++)
+			if (cell_content[i][j] == OBSTACLE) 
+				obs_points.push_back(MeshPoint({i,j}));
+
+	// Begin merge
 	MeshPoint cur_point;
 	PointList search_obstacle;
 	std::list<MeshPoint>::iterator it;
@@ -41,19 +54,17 @@ MeshGrid::merge_obstacles()
 
     		for (int i=std::max(cur_point.first - SEARCH_IDX,0);i<=std::min(cur_point.first + SEARCH_IDX,T_GRID_H_NUM-1);i++){
     			for (int j=std::max(cur_point.second - SEARCH_IDX,0);j<=std::min(cur_point.second + SEARCH_IDX,T_GRID_V_NUM-1);j++){
-    				if (cell_content[i][j] != OBSTACLE) continue;
-    				if ((i==cur_point.first && j==cur_point.second)) continue;
+    				if (cell_content[i][j] != OBSTACLE) continue; // if not a obstacle, continue
+    				if ((i==cur_point.first && j==cur_point.second)) continue; // if detecting current location, continue
+    				if (examined[i][j]) continue; // if this location has been examined, continue
     				
-    				if (examined[i][j]) continue;
-    				
+    				// now merge obs
 					it = std::find(obs_points.begin(), obs_points.end(), std::make_pair(i,j));
 					if (it != obs_points.end()) {
     					search_obstacle.push_back(*it);
     					obs_points.erase(it);
 					}
-
     				examined[i][j] = 1;
-    					
     			}
     		}
     	}
@@ -280,10 +291,10 @@ MeshGrid::consume_udp(char * udp_packet)
         // If finish one circle, terminate
         past_angle += (azimuth_next - azimuth_cur);
         strcpy(block_cur, block_next);
-        if (past_angle > 216000) {
-		past_angle = 0;
+        if (past_angle > 108000) {
+			past_angle = 0;
         	merge_obstacles();
-		visualize_text();
+			visualize_text();
         	clear();
         	return 1;
         }
@@ -326,32 +337,4 @@ ros_int_init(int data)
 	T ret;
 	ret.data = data;
 	return ret;
-}
-
-int **
-int_2d_init(int row_num, int col_num)
-{
-	int ** array = new int*[row_num];
-	for (int i=0;i!=row_num;i++)
-		array[i] = new int[col_num]();
-	return array;
-}
-
-void 
-int_2d_free(int** array, int row_num)
-{
-	if (!array)	return;
-	for (int i=0;i!=row_num;i++)
-		if (array[i])
-			delete [] array[i];
-	delete [] array;
-}
-
-void
-int_2d_clear(int** array, int row_num, int col_num)
-{
-	if (!array) return;
-	for (int i=0;i!=row_num;i++)
-		for (int j=0;j!=col_num;j++)
-			array[i][j] = 0;
 }
