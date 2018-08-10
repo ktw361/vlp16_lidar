@@ -117,8 +117,8 @@ MeshGrid::grid_set(int x,int y, int new_z) // generate a point in GridMap from x
     int content_old = cell_content[x][y];
     cell_content[x][y] = get_type(low[x][y], high[x][y], diff[x][y]); // another way: if num_elem[x][y] >= 2, then OBSTACLE
 
-    if (cell_content[x][y] == OBSTACLE && content_old != OBSTACLE)
-    	obs_points.push_back(MeshPoint({x,y}));
+//    if (cell_content[x][y] == OBSTACLE && content_old != OBSTACLE)
+//    	obs_points.push_back(MeshPoint({x,y}));
 
 	num_elem[x][y] ++;
 }
