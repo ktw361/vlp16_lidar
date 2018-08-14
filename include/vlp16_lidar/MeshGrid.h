@@ -8,6 +8,8 @@
 #include "T_FU_DATA.h"
 #include "velodyne.h"
 #include "Filter.h"
+#include "vlp16_lidar/T_Msg_3D16_GRID_TO_FU.h"
+#include "vlp16_lidar/T_Msg_3D16_OBS_TO_FU.h"
 
 	// Layout :
 	//  ^
@@ -53,9 +55,9 @@ public:
 	void clear();
 
 	MeshPoint min_row_of_col(int**,int, int);
-	T_3D16_OBS_DATA compute_obs_data(int);
-	T_3D16_OBS_TO_FU get_obs_to_fu();
-	T_3D16_GRID_TO_FU get_grid_to_fu();
+	void compute_obs_data(vlp16_lidar::T_Msg_3D16_OBS_TO_FU_<std::allocator<void> >::_pObs_type &, int);
+	void set_obs_msg(vlp16_lidar::T_Msg_3D16_OBS_TO_FU &);
+	void set_grid_msg(vlp16_lidar::T_Msg_3D16_GRID_TO_FU &);
 private:
 	Filter mesh_filter;
 	int past_angle;

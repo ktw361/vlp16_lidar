@@ -137,13 +137,11 @@ MeshGrid::min_row_of_col(int ** grid_to_obs_idx, int col, int obs_idx) // Will f
 	return min_point;
 }
 
-T_3D16_OBS_DATA
-MeshGrid::compute_obs_data(int obs_id)
+void
+MeshGrid::compute_obs_data(vlp16_lidar::T_Msg_3D16_OBS_TO_FU_<std::allocator<void> >::_pObs_type &pObs, int obs_id)
 {
-	T_3D16_OBS_DATA ret;
-	ret.OBS_ID = ros_int_init<Int32>(obs_id);
+	// Real computation
 	PointList p_list = obstacle_list[obs_id];
-	ret.nPoint = ros_int_init<Int32>(p_list.size());
 	int x_min = p_list[0].first, x_max = p_list[0].first;
 	int y_min, y_max = p_list[0].second;
 	int x_min_y, x_max_y, y_min_x, y_max_x;
@@ -162,51 +160,41 @@ MeshGrid::compute_obs_data(int obs_id)
 		if (min_point_temp.second < x_min)
 			x_min = min_point_temp.first, x_min_y = min_point_temp.second;
 	}
-	ret.pPoint[T_3D16_OBS_MAX_POINT_NUM];
-	ret.pPoint[0].x_cm.data = x_min*T_GRID_RESOLUTION_V_CM, ret.pPoint[0].y_cm.data = x_min_y*T_GRID_RESOLUTION_H_CM;
-	ret.pPoint[1].x_cm.data = x_max*T_GRID_RESOLUTION_V_CM, ret.pPoint[0].y_cm.data = x_max_y*T_GRID_RESOLUTION_H_CM;
-	ret.pPoint[2].x_cm.data = y_min_x*T_GRID_RESOLUTION_V_CM, ret.pPoint[0].y_cm.data = y_min*T_GRID_RESOLUTION_H_CM;
-	ret.pPoint[3].x_cm.data = y_max_x*T_GRID_RESOLUTION_V_CM, ret.pPoint[0].y_cm.data = y_max*T_GRID_RESOLUTION_H_CM;
-	return ret;
+
+	// Setting ptr
+	auto pObs_ptr = pObs.begin() + 10*obs_id;
+	pObs_ptr[0] = obs_id;
+	pObs_ptr[1] =  x_min*T_GRID_RESOLUTION_V_CM, pObs_ptr[2] =  x_min_y*T_GRID_RESOLUTION_H_CM;
+	pObs_ptr[3] =  x_max*T_GRID_RESOLUTION_V_CM, pObs_ptr[4] =  x_max_y*T_GRID_RESOLUTION_H_CM;
+	pObs_ptr[5] =  y_min_x*T_GRID_RESOLUTION_V_CM, pObs_ptr[6] =  y_min*T_GRID_RESOLUTION_H_CM;
+	pObs_ptr[7] =  y_max_x*T_GRID_RESOLUTION_V_CM, pObs_ptr[8] =  y_max*T_GRID_RESOLUTION_H_CM;
+	pObs_ptr[9] = p_list.size();
 }
 
-T_3D16_OBS_TO_FU
-MeshGrid::get_obs_to_fu()
+void 
+MeshGrid::set_obs_msg(vlp16_lidar::T_Msg_3D16_OBS_TO_FU & obs_msg)
 {
-	T_3D16_OBS_TO_FU ret;
-	// ret.frameID;
-	// ret.syntime;
-	// ret.navID; // ??????
-	ret.pObs[T_3D16_OBS_MAX_NUM];
-	ret.nObs = ros_int_init<Int32>(obstacle_list.size());
+	obs_msg.nObs = obstacle_list.size();
 	for (int i=0;i!=obstacle_list.size();i++)
-		ret.pObs[i] = compute_obs_data(i);
-	return ret;
+		compute_obs_data(obs_msg.pObs,i);
 }
 
-T_3D16_GRID_TO_FU
-MeshGrid::get_grid_to_fu()
+void 
+MeshGrid::set_grid_msg(vlp16_lidar::T_Msg_3D16_GRID_TO_FU & grid_msg)
 {
-	T_3D16_GRID_TO_FU ret;
-	// ret.frameID;
-	// ret.syntime;
-	// ret.navID; // ??????
-	ret.gridMsk[T_GRID_V_NUM*T_GRID_H_NUM];
-	ret.pObs[T_3D16_OBS_MAX_NUM][T_3D16_OBS_MAX_GRID_NUM];
-	ret.nObs = ros_int_init<Int32>(obstacle_list.size());
-	for (int v=0;v!=T_GRID_V_NUM;v++){
-		for (int h=0;h!=T_GRID_H_NUM;h++){
-			ret.gridMsk[v*T_GRID_H_NUM + h] = ros_int_init<UInt8>(cell_content[h][v]);
+	grid_msg.nObs = obstacle_list.size();
+	for (int v=0;v!=T_GRID_V_NUM;v++) {
+		for (int h=0;h!=T_GRID_H_NUM;h++) {
+			grid_msg.gridMsk[v*T_GRID_H_NUM + h] = cell_content[h][v];
 		}
 	}
-	for (int i=0;i!=obstacle_list.size();i++){
+	for (int i=0;i!=obstacle_list.size();i++) {
 		int j=0;
-		for (auto &c: obstacle_list[i]){
-			ret.pObs[i][j++] = ros_int_init<Int32>(c.first + c.second * T_GRID_H_NUM);
-		}
-		ret.pObs[i][obstacle_list.size()] = ros_int_init<Int32>(-1);
+		for (auto &c: obstacle_list[i])
+			grid_msg.pObs[i*T_3D16_OBS_MAX_GRID_NUM + j++] = c.first * T_GRID_H_NUM + c.second;
+		// Now j should be equal to obstacle_list[i].size()
+		grid_msg.pObs[i*T_3D16_OBS_MAX_GRID_NUM + obstacle_list[i].size()] = -1;
 	}
-	return ret;
 }
 
 void
@@ -296,8 +284,8 @@ MeshGrid::consume_udp(char * udp_packet)
         if (past_angle > PAST_ANGLE) {
 			past_angle = 0;
         	merge_obstacles();
-			visualize_text();
-        	clear();
+			// visualize_text();
+        	// clear();
         	return 1;
         }
 	}

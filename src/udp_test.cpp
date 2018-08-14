@@ -22,12 +22,10 @@ main(int argc, char **argv)
 		if (recvlen != 1206) break;
 
 		state = mesh.consume_udp(buf);
-//		if (state){;
-//			mesh.
-//			mesh.merge_obstacles();
-//			// msg = mesh.get_msg();
-//			// pub.publish(msg);
-//		}
+		if (state) {
+			mesh.visualize_text();
+			mesh.clear();
+		}
 	}
 	cout << "should not come here" << endl;
 }
