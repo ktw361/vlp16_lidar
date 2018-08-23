@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(vlp16_lidar)
 add_compile_options(-std=c++11)
+set(ROS_BUILD_TYPE Debug)
+set(DCMAKE_BUILD_TYPE Debug)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
 # add_compile_options(-std=c++11)

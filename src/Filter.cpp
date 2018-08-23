@@ -2,11 +2,11 @@
 #include "vlp16_lidar/velodyne.h"
 #include <iostream>
 
-Filter::Filter(int rows, int cols, int order)
+Filter::Filter(int rows, int cols, int order_set)
 {
 	row_num = rows;
 	col_num = cols;
-	order = order;
+	order = order_set;
 	z0_tmp = int_2d_init(row_num, col_num);
 	for (int i=1;i!=order;i++) {
 		z.push_back(int_2d_init(row_num,col_num));
@@ -25,7 +25,7 @@ Filter::moving_average_with_update(int** z0)
 				z0[i][j] += c[i][j];
 			z0[i][j] = (z0[i][j] > (order / 2));
 			// update
-			for (int k=order-1;k>1;k--) 
+			for (int k=order-2;k>0;k--) 
 				z[k][i][j] = z[k-1][i][j];
 			z[0][i][j] = z0_tmp[i][j];
 		}

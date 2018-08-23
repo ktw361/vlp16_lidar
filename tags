@@ -1,0 +1,132 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+Altitude_m	include/vlp16_lidar/T_FU_DATA.h	/^	double Altitude_m;       \/\/单位:米$/;"	m	struct:tagT_MC_TO_FU
+BUFSIZE	include/vlp16_lidar/UdpClient.h	8;"	d
+COS_W	src/velodyne.cpp	/^double COS_W[16] = {0.96592582628906831,$/;"	v
+EarthRefCoord	include/vlp16_lidar/T_FU_DATA.h	/^	double EarthRefCoord[2]; \/\/ 地面平面坐标系 单位:米  [0] 北向 +X     [1] 东向 +Y   注意：暂时以校内智能楼差分站为参考基准$/;"	m	struct:tagT_MC_TO_FU
+FILTER_H	include/vlp16_lidar/Filter.h	2;"	d
+FILTER_ORDER	src/MeshGrid.cpp	11;"	d	file:
+FLOATING	include/vlp16_lidar/MeshGrid.h	/^		FLOATING = 0, 	\/\/ something that lowest part is floating above lidar , i.e z > Z_CEILING$/;"	e	enum:MeshGrid::__anon1
+Filter	include/vlp16_lidar/Filter.h	/^class Filter{$/;"	c
+Filter	src/Filter.cpp	/^Filter::Filter(int rows, int cols, int order)$/;"	f	class:Filter
+GROUND	include/vlp16_lidar/MeshGrid.h	/^		GROUND = 0,$/;"	e	enum:MeshGrid::__anon1
+GROUND_THRESH	include/vlp16_lidar/velodyne.h	13;"	d
+HOLE	include/vlp16_lidar/MeshGrid.h	/^		HOLE = -2,$/;"	e	enum:MeshGrid::__anon1
+Latitude_degree	include/vlp16_lidar/T_FU_DATA.h	/^	double Latitude_degree;  \/\/单位:度$/;"	m	struct:tagT_MC_TO_FU
+Longitude_degree	include/vlp16_lidar/T_FU_DATA.h	/^	double Longitude_degree; \/\/单位:度  $/;"	m	struct:tagT_MC_TO_FU
+MESHGRID_H	include/vlp16_lidar/MeshGrid.h	2;"	d
+MeshGrid	include/vlp16_lidar/MeshGrid.h	/^class MeshGrid$/;"	c
+MeshGrid	src/MeshGrid.cpp	/^MeshGrid::MeshGrid() : mesh_filter(T_GRID_H_NUM,T_GRID_V_NUM,FILTER_ORDER)$/;"	f	class:MeshGrid
+MeshPoint	include/vlp16_lidar/MeshGrid.h	/^	typedef std::pair<int,int> MeshPoint;$/;"	t	class:MeshGrid
+OBSTACLE	include/vlp16_lidar/MeshGrid.h	/^		OBSTACLE = 1,	$/;"	e	enum:MeshGrid::__anon1
+OBS_ID	include/vlp16_lidar/T_FU_DATA.h	/^    Int32 OBS_ID;                                   \/\/障碍物ID$/;"	m	struct:tag_T_3D16_OBS_DATA
+PAST_ANGLE	src/MeshGrid.cpp	10;"	d	file:
+PI	include/vlp16_lidar/velodyne.h	8;"	d
+PointList	include/vlp16_lidar/MeshGrid.h	/^	typedef std::deque<MeshPoint> PointList;$/;"	t	class:MeshGrid
+SEARCH_IDX	include/vlp16_lidar/velodyne.h	15;"	d
+SERVICE_PORT	include/vlp16_lidar/UdpClient.h	9;"	d
+SIN_W	src/velodyne.cpp	/^double SIN_W[16] = {-0.25881904510252074,$/;"	v
+T_3D16_GRID_TO_FU	include/vlp16_lidar/T_FU_DATA.h	/^}T_3D16_GRID_TO_FU;$/;"	t	typeref:struct:tagT_3D16_GRID_TO_FU
+T_3D16_OBS_DATA	include/vlp16_lidar/T_FU_DATA.h	/^}T_3D16_OBS_DATA;$/;"	t	typeref:struct:tag_T_3D16_OBS_DATA
+T_3D16_OBS_MAX_GRID_NUM	include/vlp16_lidar/T_FU_DATA.h	21;"	d
+T_3D16_OBS_MAX_NUM	include/vlp16_lidar/T_FU_DATA.h	22;"	d
+T_3D16_OBS_MAX_POINT_NUM	include/vlp16_lidar/T_FU_DATA.h	20;"	d
+T_3D16_OBS_TO_FU	include/vlp16_lidar/T_FU_DATA.h	/^}T_3D16_OBS_TO_FU;$/;"	t	typeref:struct:tagT_3D16_OBS_TO_FU
+T_FU_TO_PL	include/vlp16_lidar/T_FU_DATA.h	/^}T_FU_TO_PL;$/;"	t	typeref:struct:tagT_FU_TO_PL
+T_GRID_DISTANCE_H_CM	include/vlp16_lidar/T_FU_DATA.h	24;"	d
+T_GRID_DISTANCE_V_CM	include/vlp16_lidar/T_FU_DATA.h	23;"	d
+T_GRID_H_NUM	include/vlp16_lidar/T_FU_DATA.h	28;"	d
+T_GRID_RESOLUTION_H_CM	include/vlp16_lidar/T_FU_DATA.h	26;"	d
+T_GRID_RESOLUTION_V_CM	include/vlp16_lidar/T_FU_DATA.h	25;"	d
+T_GRID_V_NUM	include/vlp16_lidar/T_FU_DATA.h	27;"	d
+T_MC_TO_FU	include/vlp16_lidar/T_FU_DATA.h	/^}T_MC_TO_FU;$/;"	t	typeref:struct:tagT_MC_TO_FU
+T_POINT_2D	include/vlp16_lidar/T_FU_DATA.h	/^struct T_POINT_2D$/;"	s
+UDPCLIENT_H	include/vlp16_lidar/UdpClient.h	2;"	d
+UdpClient	include/vlp16_lidar/UdpClient.h	/^class UdpClient$/;"	c
+UdpClient	src/UdpClient.cpp	/^UdpClient::UdpClient()$/;"	f	class:UdpClient
+VELODYNE_H	include/vlp16_lidar/velodyne.h	2;"	d
+WINDOW_SZ	include/vlp16_lidar/velodyne.h	16;"	d
+Z_CEILING	include/vlp16_lidar/velodyne.h	12;"	d
+Z_GROUND	include/vlp16_lidar/velodyne.h	11;"	d
+Z_RESOLUTION	include/vlp16_lidar/velodyne.h	10;"	d
+_T_FU_DATA_H	include/vlp16_lidar/T_FU_DATA.h	13;"	d
+addrlen	include/vlp16_lidar/UdpClient.h	/^	socklen_t addrlen = sizeof(remaddr);		\/* length of addresses *\/$/;"	m	class:UdpClient
+block_cur	include/vlp16_lidar/MeshGrid.h	/^	char block_cur[98];$/;"	m	class:MeshGrid
+block_next	include/vlp16_lidar/MeshGrid.h	/^	char block_next[98];$/;"	m	class:MeshGrid
+buf	include/vlp16_lidar/MeshGrid.h	/^	char buf[2];$/;"	m	class:MeshGrid
+cell_content	include/vlp16_lidar/MeshGrid.h	/^    int **cell_content; \/\/ defines the content type in one cell: [GROUND, OBSTACLE, FLOATING]$/;"	m	class:MeshGrid
+char_to_int	include/vlp16_lidar/velodyne.h	6;"	d
+clear	src/MeshGrid.cpp	/^MeshGrid::clear()$/;"	f	class:MeshGrid
+col_num	include/vlp16_lidar/Filter.h	/^	int row_num, col_num;$/;"	m	class:Filter
+compute_obs_data	src/MeshGrid.cpp	/^MeshGrid::compute_obs_data(vlp16_lidar::T_Msg_3D16_OBS_TO_FU_<std::allocator<void> >::_pObs_type &pObs, int obs_id)$/;"	f	class:MeshGrid
+consume_udp	src/MeshGrid.cpp	/^MeshGrid::consume_udp(char * udp_packet)$/;"	f	class:MeshGrid
+diff	include/vlp16_lidar/MeshGrid.h	/^    int **diff;$/;"	m	class:MeshGrid
+examined	include/vlp16_lidar/MeshGrid.h	/^    int **examined;$/;"	m	class:MeshGrid
+fd	include/vlp16_lidar/UdpClient.h	/^	int fd;				\/* our socket *\/$/;"	m	class:UdpClient
+frameID	include/vlp16_lidar/T_FU_DATA.h	/^    Int32                    frameID;                               \/\/帧ID(从0开始)$/;"	m	struct:tagT_3D16_OBS_TO_FU
+frameID	include/vlp16_lidar/T_FU_DATA.h	/^    Int32 frameID;                                                 \/\/帧号$/;"	m	struct:tagT_3D16_GRID_TO_FU
+frameID	include/vlp16_lidar/T_FU_DATA.h	/^    Int32 frameID;                                                 \/\/帧号$/;"	m	struct:tagT_FU_TO_PL
+get_abs_azimuth	src/velodyne.cpp	/^get_abs_azimuth(char * block)$/;"	f
+get_abs_dist	src/velodyne.cpp	/^get_abs_dist(char * block, int  i)$/;"	f
+get_type	src/MeshGrid.cpp	/^MeshGrid::get_type(int z_low, int z_high, int diff) \/\/ returns content type according to z and diff$/;"	f	class:MeshGrid
+gridMsk	include/vlp16_lidar/T_FU_DATA.h	/^    UInt8 gridMsk[T_GRID_V_NUM*T_GRID_H_NUM];                      \/\/栅格数组,值0-255，0表示无障碍，非0表示有障碍$/;"	m	struct:tagT_3D16_GRID_TO_FU
+gridMsk	include/vlp16_lidar/T_FU_DATA.h	/^    UInt8 gridMsk[T_GRID_V_NUM*T_GRID_H_NUM];                      \/\/栅格数组,值0-255，0表示无障碍，非0表示有障碍$/;"	m	struct:tagT_FU_TO_PL
+grid_set	src/MeshGrid.cpp	/^MeshGrid::grid_set(int x,int y, int new_z) \/\/ generate a point in GridMap from xyz$/;"	f	class:MeshGrid
+grid_to_obs_idx	include/vlp16_lidar/MeshGrid.h	/^    int ** grid_to_obs_idx;$/;"	m	class:MeshGrid
+high	include/vlp16_lidar/MeshGrid.h	/^    int **low, **high;$/;"	m	class:MeshGrid
+int_2d_clear	src/velodyne.cpp	/^int_2d_clear(int** array, int row_num, int col_num)$/;"	f
+int_2d_free	src/velodyne.cpp	/^int_2d_free(int** array, int row_num)$/;"	f
+int_2d_init	src/velodyne.cpp	/^int_2d_init(int row_num, int col_num)$/;"	f
+low	include/vlp16_lidar/MeshGrid.h	/^    int **low, **high;$/;"	m	class:MeshGrid
+main	src/main.cpp	/^int main(int argc, char **argv){$/;"	f
+main	src/talker.cpp	/^int main(int argc, char **argv){$/;"	f
+main	src/udp_test.cpp	/^main(int argc, char **argv)$/;"	f
+merge_obstacles	src/MeshGrid.cpp	/^MeshGrid::merge_obstacles()$/;"	f	class:MeshGrid
+mesh_filter	include/vlp16_lidar/MeshGrid.h	/^	Filter mesh_filter;$/;"	m	class:MeshGrid
+min_row_of_col	src/MeshGrid.cpp	/^MeshGrid::min_row_of_col(int ** grid_to_obs_idx, int col, int obs_idx) \/\/ Will find at least one $/;"	f	class:MeshGrid
+moving_average_with_update	src/Filter.cpp	/^Filter::moving_average_with_update(int** z0) $/;"	f	class:Filter
+myaddr	include/vlp16_lidar/UdpClient.h	/^	struct sockaddr_in myaddr;	\/* our address *\/$/;"	m	class:UdpClient	typeref:struct:UdpClient::sockaddr_in
+nObs	include/vlp16_lidar/T_FU_DATA.h	/^	Int32                    nObs;                                  \/\/障碍物有效数量$/;"	m	struct:tagT_3D16_OBS_TO_FU
+nObs	include/vlp16_lidar/T_FU_DATA.h	/^    Int32 nObs;                                                    \/\/障碍物有效数量$/;"	m	struct:tagT_3D16_GRID_TO_FU
+nObs	include/vlp16_lidar/T_FU_DATA.h	/^    Int32 nObs;                                                    \/\/障碍物有效数量$/;"	m	struct:tagT_FU_TO_PL
+nPoint	include/vlp16_lidar/T_FU_DATA.h	/^    Int32 nPoint;                                   \/\/描述障碍物的实际有效点数$/;"	m	struct:tag_T_3D16_OBS_DATA
+navID	include/vlp16_lidar/T_FU_DATA.h	/^	Int32                    navID;                                 \/\/与图像获取时间最接近的导航数据编号(从0开始)$/;"	m	struct:tagT_3D16_OBS_TO_FU
+navID	include/vlp16_lidar/T_FU_DATA.h	/^    Int32  navID;$/;"	m	struct:tagT_MC_TO_FU
+navID	include/vlp16_lidar/T_FU_DATA.h	/^    Int32 navID;                                                   \/\/最近的惯导号$/;"	m	struct:tagT_3D16_GRID_TO_FU
+navID	include/vlp16_lidar/T_FU_DATA.h	/^    Int32 navID;                                                   \/\/最近的惯导号$/;"	m	struct:tagT_FU_TO_PL
+num_elem	include/vlp16_lidar/MeshGrid.h	/^	int **num_elem;$/;"	m	class:MeshGrid
+obs_points	include/vlp16_lidar/MeshGrid.h	/^    std::list<MeshPoint>obs_points;$/;"	m	class:MeshGrid
+obstacle_list	include/vlp16_lidar/MeshGrid.h	/^    std::vector<PointList> obstacle_list; \/\/ each element in vector is a collection of all points for one obstacle$/;"	m	class:MeshGrid
+order	include/vlp16_lidar/Filter.h	/^	int order;$/;"	m	class:Filter
+pObs	include/vlp16_lidar/T_FU_DATA.h	/^	T_3D16_OBS_DATA          pObs[T_3D16_OBS_MAX_NUM];              \/\/障碍物数组$/;"	m	struct:tagT_3D16_OBS_TO_FU
+pObs	include/vlp16_lidar/T_FU_DATA.h	/^    Int32 pObs[T_3D16_OBS_MAX_NUM][T_3D16_OBS_MAX_GRID_NUM];       \/\/数字数组，每行表示该障碍物占据的栅格标号，以-1结束$/;"	m	struct:tagT_3D16_GRID_TO_FU
+pObs	include/vlp16_lidar/T_FU_DATA.h	/^    Int32 pObs[T_3D16_OBS_MAX_NUM][T_3D16_OBS_MAX_GRID_NUM];       \/\/数字数组，每行表示该障碍物占据的栅格标号，以-1结束$/;"	m	struct:tagT_FU_TO_PL
+pPoint	include/vlp16_lidar/T_FU_DATA.h	/^    T_POINT_2D pPoint[T_3D16_OBS_MAX_POINT_NUM];  $/;"	m	struct:tag_T_3D16_OBS_DATA
+past_angle	include/vlp16_lidar/MeshGrid.h	/^	int past_angle;$/;"	m	class:MeshGrid
+receive	src/UdpClient.cpp	/^UdpClient::receive(char *buf)$/;"	f	class:UdpClient
+recvlen	include/vlp16_lidar/UdpClient.h	/^	int recvlen;			\/* # bytes received *\/$/;"	m	class:UdpClient
+remaddr	include/vlp16_lidar/UdpClient.h	/^	struct sockaddr_in remaddr;	\/* remote address *\/$/;"	m	class:UdpClient	typeref:struct:UdpClient::sockaddr_in
+ros_int_init	src/MeshGrid.cpp	/^ros_int_init(int data)$/;"	f
+row_num	include/vlp16_lidar/Filter.h	/^	int row_num, col_num;$/;"	m	class:Filter
+set_grid_msg	src/MeshGrid.cpp	/^MeshGrid::set_grid_msg(vlp16_lidar::T_Msg_3D16_GRID_TO_FU & grid_msg)$/;"	f	class:MeshGrid
+set_obs_msg	src/MeshGrid.cpp	/^MeshGrid::set_obs_msg(vlp16_lidar::T_Msg_3D16_OBS_TO_FU & obs_msg)$/;"	f	class:MeshGrid
+syntime	include/vlp16_lidar/T_FU_DATA.h	/^    Int32                    syntime;                               \/\/时间戳$/;"	m	struct:tagT_3D16_OBS_TO_FU
+syntime	include/vlp16_lidar/T_FU_DATA.h	/^    Int32 syntime;                                                 \/\/时间戳$/;"	m	struct:tagT_3D16_GRID_TO_FU
+syntime	include/vlp16_lidar/T_FU_DATA.h	/^    Int32 syntime;                                                 \/\/时间戳$/;"	m	struct:tagT_FU_TO_PL
+tagT_3D16_GRID_TO_FU	include/vlp16_lidar/T_FU_DATA.h	/^typedef struct tagT_3D16_GRID_TO_FU$/;"	s
+tagT_3D16_OBS_TO_FU	include/vlp16_lidar/T_FU_DATA.h	/^typedef struct tagT_3D16_OBS_TO_FU$/;"	s
+tagT_FU_TO_PL	include/vlp16_lidar/T_FU_DATA.h	/^typedef struct tagT_FU_TO_PL$/;"	s
+tagT_MC_TO_FU	include/vlp16_lidar/T_FU_DATA.h	/^typedef struct tagT_MC_TO_FU$/;"	s
+tag_T_3D16_OBS_DATA	include/vlp16_lidar/T_FU_DATA.h	/^typedef struct tag_T_3D16_OBS_DATA$/;"	s
+visualize_text	src/MeshGrid.cpp	/^MeshGrid::visualize_text() \/\/ Call this function after merge_obstacles$/;"	f	class:MeshGrid
+x_cm	include/vlp16_lidar/T_FU_DATA.h	/^    Int32 x_cm;                                     \/\/车前进方向右转90度为ｘ正方向，单位cm$/;"	m	struct:T_POINT_2D
+y_cm	include/vlp16_lidar/T_FU_DATA.h	/^    Int32 y_cm;                                     \/\/车前进方向为ｙ正方向,单位cm$/;"	m	struct:T_POINT_2D
+z	include/vlp16_lidar/Filter.h	/^	std::vector<int**> z;$/;"	m	class:Filter
+z0_tmp	include/vlp16_lidar/Filter.h	/^	int **z0_tmp;$/;"	m	class:Filter
+~Filter	src/Filter.cpp	/^Filter::~Filter()$/;"	f	class:Filter
+~MeshGrid	src/MeshGrid.cpp	/^MeshGrid::~MeshGrid()	\/\/ destruct$/;"	f	class:MeshGrid
+~UdpClient	src/UdpClient.cpp	/^UdpClient::~UdpClient(){;}$/;"	f	class:UdpClient
