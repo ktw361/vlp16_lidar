@@ -19,7 +19,7 @@ using namespace std_msgs;
 
 #define T_3D16_OBS_MAX_POINT_NUM 4                                   //每个障碍物最多用T_OBS_MAX_POINT个点描述
 #define T_3D16_OBS_MAX_GRID_NUM 100                                  //每个障碍物最多占据多少个栅格
-#define T_3D16_OBS_MAX_NUM 64                                        //每帧最大障碍物数量
+#define T_3D16_OBS_MAX_NUM 10                                       //每帧最大障碍物数量
 #define T_GRID_DISTANCE_V_CM 1000                                    //栅格地图垂直(vertical)距离，车前方1000,后方0,单位cm
 #define T_GRID_DISTANCE_H_CM 200                                     //栅格地图水平(Horizontal)距离，车左右各100,单位cm
 #define T_GRID_RESOLUTION_V_CM 10                                    //栅格地图垂直分辨率，单位cm

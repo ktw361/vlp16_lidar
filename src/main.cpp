@@ -12,7 +12,7 @@ using vlp16_lidar::T_Msg_3D16_GRID_TO_FU;
 int main(int argc, char **argv){
     ros::init(argc, argv, "main_node");
     ros::NodeHandle n;
-    ros::Publisher grid_pub = n.advertise<T_Msg_3D16_GRID_TO_FU>("grid_to_fu",1000); // Length ?? overflow?
+    ros::Publisher grid_pub = n.advertise<T_Msg_3D16_GRID_TO_FU>("T_FU",1000); // Length ?? overflow?
     ros::Publisher obs_pub = n.advertise<T_Msg_3D16_OBS_TO_FU>("obs_to_fu",1000);
 
     ros::Rate loop_rate(0.2);

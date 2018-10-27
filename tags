@@ -12,7 +12,7 @@ FILTER_H	include/vlp16_lidar/Filter.h	2;"	d
 FILTER_ORDER	src/MeshGrid.cpp	11;"	d	file:
 FLOATING	include/vlp16_lidar/MeshGrid.h	/^		FLOATING = 0, 	\/\/ something that lowest part is floating above lidar , i.e z > Z_CEILING$/;"	e	enum:MeshGrid::__anon1
 Filter	include/vlp16_lidar/Filter.h	/^class Filter{$/;"	c
-Filter	src/Filter.cpp	/^Filter::Filter(int rows, int cols, int order)$/;"	f	class:Filter
+Filter	src/Filter.cpp	/^Filter::Filter(int rows, int cols, int order_set)$/;"	f	class:Filter
 GROUND	include/vlp16_lidar/MeshGrid.h	/^		GROUND = 0,$/;"	e	enum:MeshGrid::__anon1
 GROUND_THRESH	include/vlp16_lidar/velodyne.h	13;"	d
 HOLE	include/vlp16_lidar/MeshGrid.h	/^		HOLE = -2,$/;"	e	enum:MeshGrid::__anon1
