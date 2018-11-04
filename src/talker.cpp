@@ -44,7 +44,6 @@ int main(int argc, char **argv){
             // Get corresponding mc data
             if (g_MC.size() == 0) {
                 std::cout << "No mc data, skiping vlp decoding\n";
-                continue;
             } else {
                 vlp16_lidar::T_Msg_MC_TO_FU mc_sync = g_MC.front();
             }
