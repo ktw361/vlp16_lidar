@@ -55,6 +55,7 @@ add_message_files(
   FILES
   T_Msg_3D16_GRID_TO_FU.msg
   T_Msg_3D16_OBS_TO_FU.msg
+  T_Msg_MC_TO_FU.msg
 )
 
 ## Generate services in the 'srv' folder
