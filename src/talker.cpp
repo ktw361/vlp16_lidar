@@ -34,6 +34,8 @@ int main(int argc, char **argv){
     int recvlen;
     char buf[BUFSIZE];
     int state;
+
+    int navID = 0;
     
     while (recvlen = udp_client.receive(buf)) {
         if (!ros::ok()) break;
@@ -45,8 +47,10 @@ int main(int argc, char **argv){
             if (g_MC.size() == 0) {
                 std::cout << "No mc data, skiping vlp decoding\n";
             } else {
-                vlp16_lidar::T_Msg_MC_TO_FU mc_sync = g_MC.front();
+                vlp16_lidar::T_Msg_MC_TO_FU mc_sync = g_MC.back();
+                navID = mc_sync.navID;
             }
+            std::cout << count << std::endl;
 
             T_Msg_3D16_GRID_TO_FU grid_msg;
             T_Msg_3D16_OBS_TO_FU obs_msg;
@@ -54,11 +58,11 @@ int main(int argc, char **argv){
             syntime = ros::Time::now().nsec;
             grid_msg.frameID = count;
             grid_msg.syntime = syntime;
-            grid_msg.navID = 0;
+            grid_msg.navID = navID;
             mesh.set_grid_msg(grid_msg);
 
             obs_msg.frameID = count;
-            obs_msg.navID = 0;
+            obs_msg.navID = navID;
             mesh.set_obs_msg(obs_msg);
             
             mesh.visualize_text();
@@ -70,7 +74,7 @@ int main(int argc, char **argv){
             ros::spinOnce();
             loop_rate.sleep();
 
-            g_MC.clear();
+//            g_MC.clear();
             ++count;
         }
     }
@@ -83,4 +87,7 @@ void T_MC_Callback(const vlp16_lidar::T_Msg_MC_TO_FU::ConstPtr &msg)
 {
     g_MC.push_back(*msg);
     ROS_INFO("I heard you MC! Current nacID:%d, Current buffer size: %d", msg->navID, g_MC.size());
+    if (g_MC.size() > 100) {
+        g_MC.pop_front();
+    }
 }
