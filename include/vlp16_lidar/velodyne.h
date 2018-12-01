@@ -9,7 +9,7 @@
 
 #define Z_RESOLUTION		1						// z axis resolution 1 cm
 #define Z_GROUND			(-150/Z_RESOLUTION)		// ground height relative to lidar , 150cm
-#define Z_CEILING			(40/Z_RESOLUTION)		// lowest height that we care about, 20cm above lidar
+#define Z_CEILING			(10/Z_RESOLUTION)		// lowest height that we care about, 20cm above lidar
 #define GROUND_THRESH 		(5/Z_RESOLUTION)		// ground if within [Z_GROUND - GROUND_THRESHOLD, Z_GROUND + GROUND_THRESHOLD]
 
 #define SEARCH_IDX 			(40/10)		

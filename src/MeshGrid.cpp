@@ -28,7 +28,7 @@ std::vector<MeshGrid::PointList>
 MeshGrid::merge_obstacles()
 {
 	// Step one: do filtering
-	mesh_filter.moving_average_with_update(cell_content);
+//	mesh_filter.moving_average_with_update(cell_content);
 
 	// Step two: reset obs_point based on  cell_content
     obs_points.clear();
