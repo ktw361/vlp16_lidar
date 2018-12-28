@@ -85,10 +85,10 @@ MeshGrid::merge_obstacles()
 int 
 MeshGrid::get_type(int z_low, int z_high, int diff) // returns content type according to z and diff
 {
-	if (diff > GROUND_THRESH)
-		return OBSTACLE;
-	else
-		return GROUND;
+    if (z_low - Z_GROUND >= GROUND_THRESH)
+        return OBSTACLE;
+    else 
+        return GROUND;
 }
 
 void 

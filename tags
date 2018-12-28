@@ -43,6 +43,7 @@ T_GRID_H_NUM	include/vlp16_lidar/T_FU_DATA.h	28;"	d
 T_GRID_RESOLUTION_H_CM	include/vlp16_lidar/T_FU_DATA.h	26;"	d
 T_GRID_RESOLUTION_V_CM	include/vlp16_lidar/T_FU_DATA.h	25;"	d
 T_GRID_V_NUM	include/vlp16_lidar/T_FU_DATA.h	27;"	d
+T_MC_Callback	src/talker.cpp	/^void T_MC_Callback(const vlp16_lidar::T_Msg_MC_TO_FU::ConstPtr &msg)$/;"	f
 T_MC_TO_FU	include/vlp16_lidar/T_FU_DATA.h	/^}T_MC_TO_FU;$/;"	t	typeref:struct:tagT_MC_TO_FU
 T_POINT_2D	include/vlp16_lidar/T_FU_DATA.h	/^struct T_POINT_2D$/;"	s
 UDPCLIENT_H	include/vlp16_lidar/UdpClient.h	2;"	d
